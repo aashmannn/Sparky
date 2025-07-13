@@ -2,7 +2,7 @@
 
 An AI-powered web platform that automates end-to-end carbon emissions tracking, forecasting, incentive optimization, and ESG compliance reporting across Walmart's global supply chain.
 
-## 🎯 Project Overview
+## Project Overview
 
 The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help Walmart achieve its sustainability goals by:
 
@@ -12,7 +12,7 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
 - **Incentive Optimization**: Matching emissions reductions to sustainability incentives and carbon credits
 - **Compliance Reporting**: One-click generation of SEC/EU compliant ESG reports
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -26,7 +26,7 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.9+
@@ -73,7 +73,7 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
    npm start
    ```
 
-## 📊 Features
+## Features
 
 ### 1. Data Ingestion & Parsing
 - Drag-and-drop interface for file uploads
@@ -105,7 +105,7 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
 - Blockchain hash verification
 - Executive dashboard summaries
 
-## 🎨 UI/UX Design
+## UI/UX Design
 
 Inspired by Tolerisk.com with a professional, executive-style interface:
 
@@ -115,7 +115,7 @@ Inspired by Tolerisk.com with a professional, executive-style interface:
 - **Responsive**: Mobile-friendly grid layout
 - **Interactions**: Smooth transitions and hover animations
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React.js** - UI framework
@@ -144,14 +144,14 @@ Inspired by Tolerisk.com with a professional, executive-style interface:
 - **GitHub Actions** - CI/CD
 - **AWS/GCP** - Cloud hosting
 
-## 📈 Mock Data Sources
+## Mock Data Sources
 
 - EPA GHG emission factors
 - UCI Smart Meter Data
 - Synthetic invoice PDFs
 - EU carbon trading data
 
-## 🔧 API Endpoints
+## API Endpoints
 
 ### Data Ingestion
 - `POST /api/v1/upload` - File upload and parsing
@@ -174,7 +174,7 @@ Inspired by Tolerisk.com with a professional, executive-style interface:
 - `GET /api/v1/reports` - Generate ESG reports
 - `GET /api/v1/reports/{id}/download` - Download report
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Backend tests
@@ -186,14 +186,3 @@ cd frontend
 npm test
 ```
 
-## 📝 License
-
-This project is proprietary to Walmart Inc.
-
-## 🤝 Contributing
-
-This is an internal Walmart project. Please follow the company's contribution guidelines.
-
-## 📞 Support
-
-For technical support or questions, please contact the ESG Technology team. 
