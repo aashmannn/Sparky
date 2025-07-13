@@ -11,37 +11,29 @@ from app.core.database import engine, Base
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Walmart ESG Carbon Optimizer",
-    description="AI-powered ESG carbon emissions tracking and optimization platform",
-    version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc"
+    title="ESG Carbon Optimizer API",
+    description="AI-powered carbon emissions tracking and optimization platform",
+    version="1.0.0"
 )
 
-# CORS middleware
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["*"],  # In production, replace with specific origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include API routes
 app.include_router(api_router, prefix="/api/v1")
-
-# Health check endpoint
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy", "service": "Walmart ESG Carbon Optimizer"}
 
 @app.get("/")
 async def root():
-    return {
-        "message": "Welcome to Walmart ESG Carbon Optimizer API",
-        "version": "1.0.0",
-        "docs": "/docs"
-    }
+    return {"message": "ESG Carbon Optimizer API", "version": "1.0.0"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 
 if __name__ == "__main__":
     uvicorn.run(

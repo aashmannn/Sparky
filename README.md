@@ -1,10 +1,10 @@
-# Autonomous ESG Carbon Optimizer for Walmart
+# ESG Carbon Optimizer
 
-An AI-powered web platform that automates end-to-end carbon emissions tracking, forecasting, incentive optimization, and ESG compliance reporting across Walmart's global supply chain.
+An AI-powered web platform that automates end-to-end carbon emissions tracking, forecasting, incentive optimization, and ESG compliance reporting.
 
 ## Project Overview
 
-The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help Walmart achieve its sustainability goals by:
+The ESG Carbon Optimizer is a comprehensive solution designed to help organizations achieve their sustainability goals by:
 
 - **Automating Data Ingestion**: NLP-powered parsing of supplier invoices, utility bills, and CSV files
 - **Carbon Ledger Management**: Structured storage of carbon event data with audit trails
@@ -17,7 +17,7 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Frontend      │    │    Backend      │    │   Database      │
-│   (React.js)    │◄──►│   (FastAPI)     │◄──►│  (PostgreSQL)   │
+│   (React.js)    │◄──►│   (FastAPI)     │◄──►│   (SQLite)      │
 │                 │    │                 │    │                 │
 │ • Dashboard     │    │ • Data Ingestion│    │ • Carbon Ledger │
 │ • Upload UI     │    │ • ML Models     │    │ • User Data     │
@@ -31,15 +31,14 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
 ### Prerequisites
 - Python 3.9+
 - Node.js 16+
-- PostgreSQL 13+
-- Docker (optional)
+- Git
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd walmart-esg-optimizer
+   git clone https://github.com/aashmannn/Sparky.git
+   cd Sparky
    ```
 
 2. **Backend Setup**
@@ -56,13 +55,7 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
    npm install
    ```
 
-4. **Database Setup**
-   ```bash
-   cd database
-   # Follow PostgreSQL setup instructions
-   ```
-
-5. **Start the Application**
+4. **Start the Application**
    ```bash
    # Terminal 1: Backend
    cd backend
@@ -73,25 +66,30 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
    npm start
    ```
 
+5. **Access the Application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - API Docs: http://localhost:8000/docs
+
 ## Features
 
 ### 1. Data Ingestion & Parsing
 - Drag-and-drop interface for file uploads
-- NLP-powered extraction using Hugging Face Transformers
+- NLP-powered extraction using Google Gemini
 - Support for PDF invoices, CSV files, and utility bills
 - Automatic emission factor mapping
 
 ### 2. Carbon Ledger
-- PostgreSQL-based structured storage
+- SQLite-based structured storage (PostgreSQL for production)
 - Timestamped carbon events with audit flags
 - Supplier and product-level tracking
-- Blockchain-ready architecture
+- Real-time data visualization
 
 ### 3. Emissions Forecasting
-- ML models trained on historical data
+- ML models for emissions prediction
 - Predictions by supplier, route, and SKU
 - RESTful API endpoints for forecasts
-- Confidence intervals and trend analysis
+- Interactive charts and trend analysis
 
 ### 4. Incentive Mapping Engine
 - Rules-based matching system
@@ -100,17 +98,17 @@ The Autonomous ESG Carbon Optimizer is a comprehensive solution designed to help
 - Financial impact calculations
 
 ### 5. Report Generation
-- SEC/EU compliance-ready reports
+- ESG compliance-ready reports
 - PDF and CSV export options
-- Blockchain hash verification
 - Executive dashboard summaries
+- Real-time analytics
 
 ## UI/UX Design
 
-Inspired by Tolerisk.com with a professional, executive-style interface:
+Professional, executive-style interface with:
 
 - **Color Palette**: White and deep blue base with steel grey accents
-- **Typography**: Modern sans-serif fonts (Inter, Open Sans)
+- **Typography**: Modern sans-serif fonts
 - **Layout**: Card-based UI with elevated containers
 - **Responsive**: Mobile-friendly grid layout
 - **Interactions**: Smooth transitions and hover animations
@@ -122,6 +120,7 @@ Inspired by Tolerisk.com with a professional, executive-style interface:
 - **Chart.js** - Data visualization
 - **TailwindCSS** - Styling
 - **Axios** - HTTP client
+- **TypeScript** - Type safety
 
 ### Backend
 - **FastAPI** - Python web framework
@@ -130,59 +129,70 @@ Inspired by Tolerisk.com with a professional, executive-style interface:
 - **Uvicorn** - ASGI server
 
 ### AI/ML
-- **Hugging Face Transformers** - NLP processing
-- **PyTorch** - Deep learning
+- **Google Gemini** - NLP processing
 - **scikit-learn** - Machine learning
 - **Pandas** - Data manipulation
 
 ### Database
-- **PostgreSQL** - Primary database
-- **Redis** - Caching (optional)
+- **SQLite** - Development database
+- **PostgreSQL** - Production database (recommended)
 
-### DevOps
-- **Docker** - Containerization
-- **GitHub Actions** - CI/CD
-- **AWS/GCP** - Cloud hosting
+## Deployment
 
-## Mock Data Sources
+### Frontend (Netlify)
+The frontend is configured for deployment on Netlify with:
+- Build command: `npm run build`
+- Publish directory: `frontend/build`
+- Environment variables for backend API URL
 
-- EPA GHG emission factors
-- UCI Smart Meter Data
-- Synthetic invoice PDFs
-- EU carbon trading data
+### Backend (Recommended Platforms)
+- **Render**: Easy deployment with PostgreSQL
+- **Railway**: Simple setup with database
+- **Heroku**: Traditional platform with add-ons
+- **Fly.io**: Modern container platform
 
 ## API Endpoints
 
 ### Data Ingestion
-- `POST /api/v1/upload` - File upload and parsing
-- `POST /api/v1/parse` - Manual data entry
+- `POST /api/v1/upload/file` - File upload and parsing
 
 ### Carbon Ledger
 - `GET /api/v1/carbon-events` - Retrieve carbon events
 - `POST /api/v1/carbon-events` - Create new carbon event
-- `PUT /api/v1/carbon-events/{id}` - Update carbon event
 
 ### Forecasting
-- `GET /api/v1/forecast` - Get emissions forecasts
-- `POST /api/v1/forecast/train` - Retrain ML models
+- `GET /api/v1/forecasts` - Get emissions forecasts
+- `POST /api/v1/forecast/generate` - Generate new forecast
 
 ### Incentives
 - `GET /api/v1/incentives` - Available incentives
-- `POST /api/v1/incentives/match` - Match reductions to incentives
 
 ### Reports
 - `GET /api/v1/reports` - Generate ESG reports
-- `GET /api/v1/reports/{id}/download` - Download report
 
-## Testing
+## Environment Variables
 
-```bash
-# Backend tests
-cd backend
-pytest
-
-# Frontend tests
-cd frontend
-npm test
+### Frontend (.env)
 ```
+REACT_APP_BACKEND_URL=http://localhost:8000
+REACT_APP_GEMINI_API_KEY=your_gemini_api_key
+```
+
+### Backend (.env)
+```
+DATABASE_URL=sqlite:///./esg_optimizer.db
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
 
